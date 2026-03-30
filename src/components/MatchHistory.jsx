@@ -39,10 +39,10 @@ export default function MatchHistory() {
           const mvpTeam = mvpResult ? teams.find((t) => t.id === mvpResult.teamId) : null
 
           return (
-            <div key={match.id} className="bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+            <div key={match.id} className="glass border border-white/[0.09] rounded-sm overflow-hidden">
 
               {/* Match header */}
-              <div className="flex items-center justify-between px-5 py-3.5 border-b border-zinc-800 bg-zinc-950/50">
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.07] bg-black/20">
                 <div className="flex items-center gap-3">
                   <span className="font-display font-bold text-zinc-100">Match {match.number}</span>
                   {match.locked && (
@@ -70,7 +70,7 @@ export default function MatchHistory() {
               ) : (
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-zinc-800/40">
+                    <tr className="border-b border-white/[0.06]">
                       <th className="py-2 px-5 text-left text-[10px] text-zinc-700 uppercase tracking-wider font-medium">Place</th>
                       <th className="py-2 px-5 text-left text-[10px] text-zinc-700 uppercase tracking-wider font-medium">Team</th>
                       <th className="py-2 px-5 text-right text-[10px] text-zinc-700 uppercase tracking-wider font-medium">Kills</th>
@@ -92,7 +92,7 @@ export default function MatchHistory() {
                       return (
                         <tr
                           key={result.teamId}
-                          className="border-b border-zinc-800/30 last:border-0 hover:bg-zinc-800/20"
+                          className="border-b border-white/[0.04] last:border-0 hover:bg-white/[0.03]"
                         >
                           <td className={`py-3 px-5 font-display font-bold ${isDuplicate ? 'text-yellow-400' : 'text-zinc-500'}`}>
                             #{result.placement}
@@ -144,7 +144,7 @@ export default function MatchHistory() {
 
               {/* Match summary bar */}
               {hasResults && (
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 px-5 py-3 border-t border-zinc-800/60 bg-zinc-950/40 text-xs">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 px-5 py-3 border-t border-white/[0.06] bg-black/15 text-xs">
                   <span className="text-[10px] text-zinc-700 uppercase tracking-wider shrink-0">Summary</span>
 
                   <span className="flex items-center gap-1.5 text-zinc-500">

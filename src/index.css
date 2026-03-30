@@ -184,6 +184,30 @@
   animation: nukePulse 0.8s ease-in-out infinite;
 }
 
+/* ── Liquid glass ────────────────────────────────────── */
+
+/* Surfaces — cards, toolbars, tables */
+.glass {
+  background: rgba(255, 255, 255, 0.038) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),   /* top specular edge */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),         /* bottom shadow edge */
+    0 8px 32px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Panels — modals, overlays */
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(40px) saturate(180%) brightness(1.04);
+  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 24px 64px -8px rgba(0, 0, 0, 0.55);
+}
+
 /* ── Reduced motion ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

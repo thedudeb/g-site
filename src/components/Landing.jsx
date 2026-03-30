@@ -110,7 +110,7 @@ export default function Landing({ onNavigate }) {
             {infoCards.map(({ label, value, icon: Icon }, i) => (
               <div
                 key={label}
-                className="card-lift group bg-zinc-900/60 border border-zinc-800/60 rounded-sm p-6 text-center transition-all duration-200 hover:bg-zinc-900 animate-fade-up"
+                className="glass card-lift group border border-white/[0.08] rounded-sm p-6 text-center transition-all duration-200 animate-fade-up"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
                 <Icon size={18} className="text-emerald-400/70 mx-auto mb-3 group-hover:text-emerald-400 transition-colors" />
@@ -160,22 +160,22 @@ export default function Landing({ onNavigate }) {
             Scoring System
           </p>
 
-          <div className="bg-zinc-900/50 border border-zinc-800/60 rounded-sm overflow-hidden">
+          <div className="glass border border-white/[0.08] rounded-sm overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-zinc-800/60 bg-zinc-950/50">
+                <tr className="border-b border-white/[0.07] bg-black/20">
                   <th className="py-3 px-5 text-left text-[10px] text-zinc-600 uppercase tracking-wider font-medium">Placement</th>
                   <th className="py-3 px-5 text-right text-[10px] text-zinc-600 uppercase tracking-wider font-medium">Points</th>
                 </tr>
               </thead>
               <tbody>
                 {[['1st', 10], ['2nd', 7], ['3rd', 5], ['4th', 3], ['5th+', 1]].map(([place, pts]) => (
-                  <tr key={place} className="border-b border-zinc-800/40 last:border-0 hover:bg-zinc-800/20">
+                  <tr key={place} className="border-b border-white/[0.05] last:border-0 hover:bg-white/[0.03]">
                     <td className="py-3.5 px-5 font-display font-semibold text-zinc-300">{place}</td>
                     <td className="py-3.5 px-5 text-right font-display font-bold text-emerald-400">+{pts}</td>
                   </tr>
                 ))}
-                <tr className="bg-emerald-950/20 border-t border-zinc-800/40">
+                <tr className="bg-emerald-950/20 border-t border-white/[0.05]">
                   <td className="py-3 px-5 text-zinc-500 text-xs">+ Kills</td>
                   <td className="py-3 px-5 text-right text-emerald-400/80 text-xs font-bold font-display">+1 each</td>
                 </tr>

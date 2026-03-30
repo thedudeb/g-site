@@ -66,7 +66,7 @@ export default function Teams() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="bg-zinc-900 border border-zinc-800 rounded-sm p-6 mb-6"
+          className="glass border border-white/[0.09] rounded-sm p-6 mb-6"
         >
           <div className="flex items-center justify-between mb-5">
             <h2 className="font-display font-bold text-zinc-100 text-base tracking-wide">
@@ -141,7 +141,7 @@ export default function Teams() {
 
       {/* Team list */}
       {teams.length === 0 ? (
-        <div className="py-20 text-center text-zinc-600 bg-zinc-900/30 border border-zinc-800/40 rounded-sm">
+        <div className="glass py-20 text-center text-zinc-600 border border-white/[0.05] rounded-sm">
           No teams registered yet. Click "Register Team" to add one.
         </div>
       ) : (
@@ -149,7 +149,7 @@ export default function Teams() {
           {teams.map((team, i) => (
             <div
               key={team.id}
-              className="group relative bg-zinc-900 border border-zinc-800/60 hover:border-emerald-400/30 hover:bg-emerald-950/20 rounded-sm px-5 py-4 flex items-center gap-4 transition-all duration-200 overflow-hidden"
+              className="glass group relative border border-white/[0.07] hover:border-emerald-400/30 rounded-sm px-5 py-4 flex items-center gap-4 transition-all duration-200 overflow-hidden"
             >
               {/* Green left-edge accent that slides in on hover */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-emerald-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-200 origin-center rounded-r-sm" />

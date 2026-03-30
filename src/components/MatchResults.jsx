@@ -96,7 +96,7 @@ export default function MatchResults() {
       <div className="flex items-center gap-3 mb-6">
         <Crosshair size={20} className="text-emerald-400" />
         <h1 className="font-display text-2xl font-bold text-white tracking-wide">Match Results</h1>
-        <span className="text-[10px] text-zinc-600 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded-sm uppercase tracking-widest">
+        <span className="glass text-[10px] text-zinc-600 border border-white/[0.07] px-2 py-0.5 rounded-sm uppercase tracking-widest">
           Admin
         </span>
       </div>
@@ -109,10 +109,10 @@ export default function MatchResults() {
             <button
               key={m.id}
               onClick={() => switchMatch(m.id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-sm text-xs font-semibold border transition-all ${
+              className={`glass flex-1 flex items-center justify-center gap-2 py-2.5 rounded-sm text-xs font-semibold border transition-all ${
                 activeMatchId === m.id
-                  ? 'bg-emerald-500/10 border-emerald-400/40 text-emerald-400'
-                  : 'bg-zinc-900 border-zinc-800 text-zinc-500 hover:text-zinc-300'
+                  ? 'border-emerald-400/40 text-emerald-400'
+                  : 'border-white/[0.06] text-zinc-500 hover:text-zinc-300'
               }`}
             >
               Match {m.number}
@@ -126,7 +126,7 @@ export default function MatchResults() {
       {match && (
         <>
           {/* Match toolbar */}
-          <div className="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-sm px-4 py-3.5 mb-4">
+          <div className="glass flex items-center justify-between border border-white/[0.08] rounded-sm px-4 py-3.5 mb-4">
             <div>
               <div className="font-display font-bold text-zinc-100 text-sm">Match {match.number}</div>
               <div className="text-xs text-zinc-600 mt-0.5">
@@ -200,7 +200,7 @@ export default function MatchResults() {
           {showForm && !match.locked && (
             <form
               onSubmit={handleSubmit}
-              className="bg-zinc-900 border border-zinc-800 rounded-sm p-5 mb-4"
+              className="glass border border-white/[0.08] rounded-sm p-5 mb-4"
             >
               <p className="text-xs font-semibold text-zinc-300 mb-4 uppercase tracking-wider">
                 Add Result
@@ -258,7 +258,7 @@ export default function MatchResults() {
           {editingResult && !match.locked && (
             <form
               onSubmit={handleSubmit}
-              className="bg-zinc-900 border border-emerald-400/20 rounded-sm p-5 mb-4"
+              className="glass border border-emerald-400/25 rounded-sm p-5 mb-4"
             >
               <p className="text-xs font-semibold text-zinc-300 mb-4 uppercase tracking-wider">
                 Edit Result —{' '}
@@ -304,14 +304,14 @@ export default function MatchResults() {
 
           {/* Results table */}
           {match.results.length === 0 ? (
-            <div className="py-14 text-center text-zinc-600 bg-zinc-900/40 border border-zinc-800/40 rounded-sm text-sm">
+            <div className="glass py-14 text-center text-zinc-600 border border-white/[0.05] rounded-sm text-sm">
               No results submitted for Match {match.number} yet.
             </div>
           ) : (
-            <div className="bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+            <div className="glass border border-white/[0.09] rounded-sm overflow-hidden">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-800 bg-zinc-950/60">
+                  <tr className="border-b border-white/[0.07] bg-black/20">
                     <th className="py-2.5 px-4 text-left text-[10px] text-zinc-600 uppercase tracking-wider">Place</th>
                     <th className="py-2.5 px-4 text-left text-[10px] text-zinc-600 uppercase tracking-wider">Team</th>
                     <th className="py-2.5 px-4 text-right text-[10px] text-zinc-600 uppercase tracking-wider">Kills</th>
@@ -332,12 +332,12 @@ export default function MatchResults() {
                       return (
                         <tr
                           key={result.teamId}
-                          className={`border-b border-zinc-800/50 last:border-0 transition-colors ${
+                          className={`border-b border-white/[0.04] last:border-0 transition-colors ${
                             result.flagged
                               ? 'bg-yellow-400/[0.04] hover:bg-yellow-400/[0.07]'
                               : isEditing
                               ? 'bg-emerald-950/20'
-                              : 'hover:bg-zinc-800/25'
+                              : 'hover:bg-white/[0.03]'
                           }`}
                         >
                           {/* Placement */}

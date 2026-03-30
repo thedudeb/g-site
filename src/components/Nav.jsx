@@ -17,7 +17,7 @@ export default function Nav({ active, onNavigate, onShowShortcuts }) {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur-sm border-b border-zinc-800/60">
+    <nav className="glass sticky top-0 z-50 border-b border-white/[0.07]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center gap-1 overflow-x-auto">
           {/* Brand */}

@@ -83,12 +83,12 @@ export default function Leaderboard() {
         {matches.map((m) => (
           <div
             key={m.id}
-            className={`flex-1 rounded-sm border px-3 py-2.5 text-center transition-colors ${
+            className={`glass flex-1 rounded-sm border px-3 py-2.5 text-center transition-colors ${
               m.locked
-                ? 'bg-emerald-400/5 border-emerald-400/20'
+                ? 'border-emerald-400/20'
                 : m.results.length > 0
-                ? 'bg-zinc-900 border-zinc-700'
-                : 'bg-zinc-900/40 border-zinc-800/40'
+                ? 'border-white/[0.09]'
+                : 'border-white/[0.04]'
             }`}
           >
             <div className="text-[10px] text-zinc-600 uppercase tracking-widest mb-0.5">Match {m.number}</div>
@@ -109,10 +109,10 @@ export default function Leaderboard() {
       )}
 
       {anyResults && (
-        <div className="bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+        <div className="glass border border-white/[0.09] rounded-sm overflow-hidden">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-zinc-800 bg-zinc-950/60">
+              <tr className="border-b border-white/[0.07] bg-black/20">
                 <th className="py-3 px-4 text-left text-[10px] text-zinc-600 uppercase tracking-wider w-16">Rank</th>
                 <th className="py-3 px-4 text-left text-[10px] text-zinc-600 uppercase tracking-wider">Team</th>
                 <th className="py-3 px-4 text-right text-[10px] text-zinc-600 uppercase tracking-wider">MP</th>
@@ -143,14 +143,14 @@ export default function Leaderboard() {
                       role="button"
                       aria-expanded={isExpanded}
                       aria-label={`${team.name}, rank ${rank}. ${isExpanded ? 'Collapse' : 'Expand'} match breakdown`}
-                      className={`border-b border-zinc-800/50 cursor-pointer select-none transition-colors ${
+                      className={`border-b border-white/[0.04] cursor-pointer select-none transition-colors ${
                         movedUp ? 'rank-up-flash' : ''
                       } ${
                         isExpanded
-                          ? 'bg-zinc-800/40'
+                          ? 'bg-white/[0.04]'
                           : rank === 1
-                          ? 'bg-yellow-400/[0.03] hover:bg-yellow-400/[0.06]'
-                          : 'hover:bg-zinc-800/30'
+                          ? 'bg-yellow-400/[0.03] hover:bg-yellow-400/[0.05]'
+                          : 'hover:bg-white/[0.03]'
                       }`}
                     >
                       {/* Rank + delta */}
@@ -216,8 +216,8 @@ export default function Leaderboard() {
 
                     {/* Per-match breakdown row */}
                     {isExpanded && (
-                      <tr className="border-b border-zinc-800/40">
-                        <td colSpan={6} className="px-4 py-3 bg-zinc-950/60">
+                      <tr className="border-b border-white/[0.04]">
+                        <td colSpan={6} className="px-4 py-3 bg-black/20">
                           <div className="flex gap-2">
                             {matches.map((match) => {
                               const result = match.results.find((r) => r.teamId === team.id)
@@ -228,14 +228,14 @@ export default function Leaderboard() {
                               return (
                                 <div
                                   key={match.id}
-                                  className={`flex-1 rounded-sm border p-3 ${
+                                  className={`glass flex-1 rounded-sm border p-3 ${
                                     result?.flagged
-                                      ? 'border-yellow-400/20 bg-yellow-400/[0.03]'
+                                      ? 'border-yellow-400/20'
                                       : result
                                       ? match.locked
-                                        ? 'border-emerald-400/15 bg-emerald-950/10'
-                                        : 'border-zinc-700/50 bg-zinc-900/50'
-                                      : 'border-zinc-800/40 bg-zinc-900/20'
+                                        ? 'border-emerald-400/15'
+                                        : 'border-white/[0.08]'
+                                      : 'border-white/[0.04]'
                                   }`}
                                 >
                                   {/* Card header */}
@@ -277,7 +277,7 @@ export default function Leaderboard() {
                                           <span className="text-zinc-600">Placement</span>
                                           <span className="text-emerald-400">+{pts}</span>
                                         </div>
-                                        <div className="flex items-center justify-between border-t border-zinc-800/60 pt-1 mt-1">
+                                        <div className="flex items-center justify-between border-t border-white/[0.06] pt-1 mt-1">
                                           <span className="text-zinc-600">Score</span>
                                           <span className="text-zinc-100 font-display font-bold">{kills + pts}</span>
                                         </div>

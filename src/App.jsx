@@ -120,11 +120,11 @@ export default function App() {
           onClick={() => setShowShortcuts(false)}
         >
           <div
-            className="relative bg-zinc-950 border border-zinc-800 rounded-sm w-full max-w-xs mx-4 overflow-hidden animate-fade-up"
+            className="glass-strong relative border border-white/[0.1] rounded-sm w-full max-w-xs mx-4 overflow-hidden animate-fade-up"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.07]">
               <span className="font-display font-bold text-zinc-100 text-sm tracking-wide uppercase">
                 Keyboard Shortcuts
               </span>
@@ -146,7 +146,7 @@ export default function App() {
             </div>
 
             {/* Footer */}
-            <div className="px-5 py-3 border-t border-zinc-800/60 bg-zinc-900/40">
+            <div className="px-5 py-3 border-t border-white/[0.06]">
               <p className="text-[10px] text-zinc-700 text-center tracking-wider uppercase">
                 Press <span className="text-zinc-500">?</span> or <span className="text-zinc-500">Esc</span> to close · click outside to dismiss
               </p>

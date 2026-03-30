@@ -11,6 +11,31 @@ npm run dev
 
 App runs at `http://localhost:5173`. Use **Reset Demo** in the nav to restore seed data at any time.
 
+### Demo Walkthrough
+
+The app loads with pre-seeded data designed to surface every feature immediately — no setup needed.
+
+**Leaderboard**
+- Match 1 is locked (finalised). Match 2 has an active dispute flag on Static Surge. Match 3 is blank.
+- Submit results for Match 3 and watch rank positions animate in real-time with ▲/▼ indicators.
+- Click any team row to expand a per-match score breakdown.
+
+**Match Results → Match 2**
+- Two teams share 1st place — the duplicate placement warning fires automatically.
+- Static Surge is pre-flagged "Pending Review" — visible on the leaderboard, match history, and the match tab itself.
+- The flag button stays available even after locking a match (Lock and Dispute are complementary, not exclusive).
+
+**Match Results → Match 1 (locked)**
+- Edit and delete are disabled. The flag button is the only action available.
+- Unlock to re-open editing.
+
+**Teams**
+- Try registering a team with a name that already exists — blocked.
+- Try removing Ghost Squad (has results in 2 matches) — warns before orphaning the data.
+
+**Keyboard shortcuts**
+- `L` Leaderboard · `T` Teams · `R` Match Results · `H` History · `?` Shortcut reference
+
 ### Easter Eggs
 
 Two hidden triggers built into the app (outside of any input field):

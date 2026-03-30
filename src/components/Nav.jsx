@@ -9,7 +9,7 @@ const tabs = [
   { id: 'history',     label: 'History',       icon: History },
 ]
 
-export default function Nav({ active, onNavigate }) {
+export default function Nav({ active, onNavigate, onShowShortcuts }) {
   const { resetToSeed } = useTournament()
 
   const handleReset = () => {
@@ -44,8 +44,18 @@ export default function Nav({ active, onNavigate }) {
             </button>
           ))}
 
-          {/* Reset (demo helper) */}
+          {/* Right controls */}
           <div className="flex-1" />
+
+          <button
+            onClick={onShowShortcuts}
+            title="Keyboard shortcuts"
+            aria-label="Show keyboard shortcuts"
+            className="px-3 py-2 text-zinc-700 hover:text-zinc-400 text-xs font-mono transition-colors shrink-0"
+          >
+            ?
+          </button>
+
           <button
             onClick={handleReset}
             title="Reset to demo data"

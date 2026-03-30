@@ -22,6 +22,16 @@ Two hidden triggers built into the app (outside of any input field):
 
 ---
 
+## Accessibility
+
+- **`prefers-reduced-motion`** — all animations, glitch layers, and scanlines are disabled for users who have enabled Reduce Motion in their OS settings
+- **Global focus ring** — consistent emerald `focus-visible` outline across every interactive element for keyboard navigation
+- **`aria-label`** on every icon-only button (edit, delete, flag, trash, cancel, reset) so screen readers announce meaningful context
+- **`aria-hidden`** on all decorative icons to prevent double-announcement
+- **Keyboard-accessible leaderboard rows** — `tabIndex`, `role="button"`, `aria-expanded`, and `Enter`/`Space` key support for the expandable match breakdown
+
+---
+
 ## Data Structure
 
 ```

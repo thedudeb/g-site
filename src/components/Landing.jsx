@@ -1,19 +1,8 @@
-import { useRef } from 'react'
 import { useTournament } from '../context/TournamentContext'
 import { Calendar, Users, Trophy, Gamepad2, ChevronRight, Zap, Target } from 'lucide-react'
 
 export default function Landing({ onNavigate }) {
   const { tournament, teams } = useTournament()
-  const heroRef = useRef(null)
-
-  const handleMouseMove = (e) => {
-    if (!heroRef.current) return
-    const rect = heroRef.current.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
-    heroRef.current.style.setProperty('--mx', `${x}%`)
-    heroRef.current.style.setProperty('--my', `${y}%`)
-  }
 
   const infoCards = [
     { label: 'Game',       value: tournament.game,       icon: Gamepad2 },
@@ -26,13 +15,7 @@ export default function Landing({ onNavigate }) {
     <div className="min-h-screen bg-[#050508]">
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section
-        ref={heroRef}
-        onMouseMove={handleMouseMove}
-        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-grid animate-grid-drift"
-      >
-        {/* Mouse spotlight */}
-        <div className="absolute inset-0 hero-spotlight pointer-events-none" />
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-grid animate-grid-drift">
 
         {/* Ambient glow — breathes slowly */}
         <div className="absolute inset-0 hero-glow animate-glow-breathe" />

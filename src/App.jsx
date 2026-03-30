@@ -29,6 +29,17 @@ export default function App() {
   const keyBuf                    = useRef([])
   const ActiveView                = VIEWS[view] ?? Landing
 
+  // Global mouse spotlight — sets CSS vars on root so the fixed overlay
+  // follows the cursor on every page, not just the landing hero.
+  useEffect(() => {
+    const onMove = (e) => {
+      document.documentElement.style.setProperty('--gx', `${e.clientX}px`)
+      document.documentElement.style.setProperty('--gy', `${e.clientY}px`)
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+
   useEffect(() => {
     const onKey = (e) => {
       // Ignore when user is typing in an input/select/textarea
@@ -64,6 +75,8 @@ export default function App() {
   return (
     <TournamentProvider>
       <div className="min-h-screen bg-[#050508] font-body text-zinc-100">
+        {/* Global mouse spotlight — visible on all pages */}
+        <div className="global-spotlight fixed inset-0 pointer-events-none z-0" />
         <Nav active={view} onNavigate={setView} />
         <ActiveView onNavigate={setView} />
       </div>

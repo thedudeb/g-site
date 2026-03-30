@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #050508;
+    color: #f4f4f5;
+  }
+}
+
+@layer utilities {
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(34, 197, 94, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-glow {
+    background: radial-gradient(
+      ellipse 90% 70% at 50% 40%,
+      rgba(34, 197, 94, 0.13) 0%,
+      transparent 70%
+    );
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px rgba(34, 197, 94, 0.55), 0 0 80px rgba(34, 197, 94, 0.2);
+  }
+
+  .text-glow-white {
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-glow {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.45), 0 0 40px rgba(34, 197, 94, 0.15);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.65), 0 0 60px rgba(34, 197, 94, 0.25);
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.06) 3px,
+      rgba(0, 0, 0, 0.06) 6px
+    );
+    pointer-events: none;
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  /* ── Entrance animations ─────────────────────────────── */
+  .animate-fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease both;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-450 { animation-delay: 450ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-750 { animation-delay: 750ms; }
+
+  /* ── Ambient / loop animations ───────────────────────── */
+  .animate-glow-breathe {
+    animation: glowBreathe 5s ease-in-out infinite;
+  }
+  .animate-grid-drift {
+    animation: gridDrift 20s linear infinite;
+  }
+  .animate-bracket-draw {
+    animation: bracketDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes glowBreathe {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.06); }
+}
+
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+@keyframes bracketDraw {
+  from { width: 0; height: 0; opacity: 0; }
+  to   { width: 2.5rem; height: 2.5rem; opacity: 1; }
+}
+
+@keyframes rankUp {
+  0%   { background-color: rgba(34, 197, 94, 0.14); }
+  60%  { background-color: rgba(34, 197, 94, 0.05); }
+  100% { background-color: transparent; }
+}
+
+.rank-up-flash {
+  animation: rankUp 2.5s ease-out;
+}
+
+/* ── Easter egg — overlay entrance ──────────────────── */
+@keyframes eggIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-egg-in {
+  animation: eggIn 0.25s ease-out both;
+}
+
+/* ── Easter egg — prestige scanline sweep ────────────── */
+@keyframes prestigeScan {
+  from { top: -8px; opacity: 0.6; }
+  to   { top: 110%; opacity: 0; }
+}
+
+.prestige-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(34, 197, 94, 0.6),
+    transparent
+  );
+  animation: prestigeScan 1.4s cubic-bezier(0.4, 0, 0.6, 1) both;
+}
+
+/* ── Easter egg — nuke shake ─────────────────────────── */
+@keyframes nukeShake {
+  0%,  100% { transform: translate(0, 0)    rotate(0deg);    }
+  10%        { transform: translate(-6px, -3px) rotate(-0.6deg); }
+  20%        { transform: translate(6px,  3px)  rotate(0.6deg);  }
+  30%        { transform: translate(-5px,  4px) rotate(-0.4deg); }
+  40%        { transform: translate(5px,  -4px) rotate(0.4deg);  }
+  50%        { transform: translate(-3px,  3px) rotate(-0.2deg); }
+  60%        { transform: translate(3px,  -3px) rotate(0.2deg);  }
+  70%        { transform: translate(-2px,  1px); }
+  80%        { transform: translate(2px,  -1px); }
+  90%        { transform: translate(-1px,  0px); }
+}
+
+.nuke-shake {
+  animation: nukeShake 0.6s ease-in-out 3;
+}
+
+/* ── Easter egg — nuke red pulse ─────────────────────── */
+@keyframes nukePulse {
+  0%,  100% { opacity: 0;    }
+  50%        { opacity: 0.25; }
+}
+
+.nuke-pulse {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(239, 68, 68, 0.5), transparent);
+  animation: nukePulse 0.8s ease-in-out infinite;
+}
+
+/* ── Mouse spotlight ─────────────────────────────────── */
+.hero-spotlight {
+  background: radial-gradient(
+    circle 400px at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 197, 94, 0.07) 0%,
+    transparent 70%
+  );
+}
+
+/* ── Button shimmer ──────────────────────────────────── */
+.btn-shimmer {
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: none;
+}
+.btn-shimmer:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.5s ease;
+}
+
+/* ── Card hover glow ─────────────────────────────────── */
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(34, 197, 94, 0.08), 0 0 0 1px rgba(34, 197, 94, 0.12);
+}
+
+/* ── Glitch effect ───────────────────────────────────── */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Cyan channel — shifts left */
+.glitch::before {
+  color: #22d3ee;
+  animation: glitchA 8s steps(1) infinite;
+}
+
+/* Emerald channel — shifts right */
+.glitch::after {
+  color: #86efac;
+  animation: glitchB 8s steps(1) infinite;
+}
+
+@keyframes glitchA {
+  0%,  87%, 100% { opacity: 0; transform: none;            clip-path: none; }
+  88%            { opacity: 0.55; transform: translate(-3px, 0);  clip-path: polygon(0 15%, 100% 15%, 100% 45%, 0 45%); }
+  89%            { opacity: 0;    transform: translate(2px, 0);   clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
+  90%            { opacity: 0.45; transform: translate(-2px, 1px); clip-path: polygon(0 5%,  100% 5%,  100% 25%, 0 25%); }
+  91%            { opacity: 0;    transform: none;            clip-path: none; }
+}
+
+@keyframes glitchB {
+  0%,  91%, 100% { opacity: 0; transform: none;             clip-path: none; }
+  92%            { opacity: 0.45; transform: translate(3px, -1px); clip-path: polygon(0 40%, 100% 40%, 100% 65%, 0 65%); }
+  93%            { opacity: 0;    transform: translate(-1px, 0);   clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); }
+  94%            { opacity: 0.4;  transform: translate(2px, 1px);  clip-path: polygon(0 5%,  100% 5%,  100% 20%, 0 20%); }
+  95%            { opacity: 0;    transform: none;             clip-path: none; }
+}

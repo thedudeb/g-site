@@ -11,6 +11,15 @@ npm run dev
 
 App runs at `http://localhost:5173`. Use **Reset Demo** in the nav to restore seed data at any time.
 
+### Easter Eggs
+
+Two hidden triggers built into the app (outside of any input field):
+
+| Trigger | Effect |
+|---|---|
+| **Konami Code** — ↑ ↑ ↓ ↓ ← → ← → B A | Prestige Mode overlay with glitch animation and scanline sweep |
+| **Type `nuke`** | Tactical Nuke incoming — red overlay, screen shake, ☢ |
+
 ---
 
 ## Data Structure

@@ -49,9 +49,10 @@ export default function Nav({ active, onNavigate }) {
           <button
             onClick={handleReset}
             title="Reset to demo data"
+            aria-label="Reset all data to demo state"
             className="flex items-center gap-1.5 px-3 py-2 text-zinc-600 hover:text-zinc-400 text-xs transition-colors shrink-0"
           >
-            <RotateCcw size={12} />
+            <RotateCcw size={12} aria-hidden="true" />
             <span className="hidden sm:inline">Reset Demo</span>
           </button>
         </div>

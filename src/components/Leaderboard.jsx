@@ -48,13 +48,34 @@ export default function Leaderboard() {
     <div className="max-w-5xl mx-auto px-4 py-10">
 
       {/* Header */}
-      <div className="flex items-center gap-3 mb-8">
-        <Trophy size={20} className="text-emerald-400" />
+      <div className="flex items-center gap-3 mb-4">
+        <Trophy size={20} className="text-emerald-400" aria-hidden="true" />
         <h1 className="font-display text-2xl font-bold text-white tracking-wide">Leaderboard</h1>
-        <div className="flex-1" />
-        <span className="text-xs text-zinc-600 bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-sm">
-          {matchesWithResults.length} / {matches.length} matches recorded
+      </div>
+
+      {/* Tournament status summary */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-6 text-xs text-zinc-600">
+        <span><span className="text-zinc-400">{teams.length}</span> teams</span>
+        <span className="text-zinc-800">·</span>
+        <span>
+          <span className="text-zinc-400">{matchesWithResults.length}</span> of {matches.length} matches have results
         </span>
+        {matches.filter(m => m.locked).length > 0 && (
+          <>
+            <span className="text-zinc-800">·</span>
+            <span className="text-emerald-400/70">
+              {matches.filter(m => m.locked).length} locked
+            </span>
+          </>
+        )}
+        {matches.flatMap(m => m.results).filter(r => r.flagged).length > 0 && (
+          <>
+            <span className="text-zinc-800">·</span>
+            <span className="text-yellow-400/70">
+              {matches.flatMap(m => m.results).filter(r => r.flagged).length} pending review
+            </span>
+          </>
+        )}
       </div>
 
       {/* Match status strip */}
@@ -112,6 +133,16 @@ export default function Leaderboard() {
                     {/* Main row */}
                     <tr
                       onClick={() => setExpandedTeamId(isExpanded ? null : team.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          setExpandedTeamId(isExpanded ? null : team.id)
+                        }
+                      }}
+                      tabIndex={0}
+                      role="button"
+                      aria-expanded={isExpanded}
+                      aria-label={`${team.name}, rank ${rank}. ${isExpanded ? 'Collapse' : 'Expand'} match breakdown`}
                       className={`border-b border-zinc-800/50 cursor-pointer select-none transition-colors ${
                         movedUp ? 'rank-up-flash' : ''
                       } ${
@@ -141,6 +172,7 @@ export default function Leaderboard() {
                         <div className="flex items-center gap-2">
                           <ChevronRight
                             size={13}
+                            aria-hidden="true"
                             className={`text-zinc-600 shrink-0 transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
                           />
                           <div>

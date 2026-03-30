@@ -385,25 +385,25 @@ export default function MatchResults() {
                                   <button
                                     onClick={() => isEditing ? closeEdit() : openEdit(result)}
                                     className={`transition-colors ${isEditing ? 'text-emerald-400' : 'text-zinc-700 hover:text-emerald-400'}`}
-                                    title={isEditing ? 'Cancel edit' : 'Edit result'}
+                                    aria-label={isEditing ? 'Cancel edit' : `Edit result for ${team?.name ?? 'this team'}`}
                                   >
-                                    <Edit2 size={13} />
+                                    <Edit2 size={13} aria-hidden="true" />
                                   </button>
                                   <button
                                     onClick={() => deleteResult(match.id, result.teamId)}
                                     className="text-zinc-700 hover:text-red-400 transition-colors"
-                                    title="Remove result"
+                                    aria-label={`Remove result for ${team?.name ?? 'this team'}`}
                                   >
-                                    <Trash2 size={13} />
+                                    <Trash2 size={13} aria-hidden="true" />
                                   </button>
                                 </>
                               )}
                               <button
                                 onClick={() => toggleFlag(result)}
                                 className={`transition-colors ${result.flagged ? 'text-yellow-400 hover:text-yellow-300' : 'text-zinc-700 hover:text-yellow-400'}`}
-                                title={result.flagged ? 'Remove flag' : 'Flag for review'}
+                                aria-label={result.flagged ? `Remove flag from ${team?.name ?? 'this team'}` : `Flag ${team?.name ?? 'this team'} result for review`}
                               >
-                                <Flag size={13} />
+                                <Flag size={13} aria-hidden="true" />
                               </button>
                             </div>
                           </td>

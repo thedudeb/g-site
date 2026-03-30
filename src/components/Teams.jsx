@@ -72,8 +72,8 @@ export default function Teams() {
             <h2 className="font-display font-bold text-zinc-100 text-base tracking-wide">
               New Team Registration
             </h2>
-            <button type="button" onClick={cancelForm} className="text-zinc-600 hover:text-zinc-400">
-              <X size={16} />
+            <button type="button" onClick={cancelForm} aria-label="Cancel registration" className="text-zinc-600 hover:text-zinc-400">
+              <X size={16} aria-hidden="true" />
             </button>
           </div>
 
@@ -164,9 +164,9 @@ export default function Teams() {
               <button
                 onClick={() => handleRemove(team)}
                 className="text-zinc-700 hover:text-red-400 transition-colors opacity-0 group-hover:opacity-100 p-1"
-                title="Remove team"
+                aria-label={`Remove ${team.name}`}
               >
-                <Trash2 size={13} />
+                <Trash2 size={13} aria-hidden="true" />
               </button>
             </div>
           ))}

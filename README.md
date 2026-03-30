@@ -38,7 +38,7 @@ Two hidden triggers built into the app (outside of any input field):
 tournament    Static config (name, game, format, date, prize pool)
 teams[]       { id, name, players: string[3] }
 matches[]     { id, number, locked: boolean, results: Result[] }
-Result        { teamId, placement: number, kills: number | null }
+Result        { teamId, placement: number, kills: number | null, flagged: boolean }
 ```
 
 All state lives in `localStorage` (key: `g-site-tournament-v1`) and is seeded with 6 teams and 2 partially-completed matches that demonstrate imperfect data scenarios:
